@@ -11,18 +11,45 @@
 // }
 
 
+// function continueGame(){
+//     // generate a random alphabet 
+//     const alphabet = getARandomAlphabet();
+//     console.log('Your random alphabet',alphabet);
+
+//     // set randomly generated alphabet to the screen (display it)
+//     const currentAlphabetElement = document.getElementById('current-alphabet');
+//     currentAlphabetElement.innerText = alphabet;
+// }
+
+
+// function play (){
+//     hideElementById('home-screen');   // এটা আগে hide করতে হবে
+//     showElementById('play-ground');   // এরপর playground দেখাবে
+//     continueGame();
+// }
+
+// function showElementById (elementId){
+//     const element = document.getElementById(elementId);
+//     element.classList.remove('hidden');
+// }
+
 function continueGame(){
     // generate a random alphabet 
     const alphabet = getARandomAlphabet();
-    console.log('Your random alphabet',alphabet);
+    console.log('Your random alphabet', alphabet);
+
+    // set randomly generated alphabet to the screen (display it)
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    currentAlphabetElement.innerText = alphabet;
+
+    // set background color
+    setBackgroundColorById(alphabet); 
 }
 
-
 function play (){
-    showElementById('home-screen');
+    hideElementById('home-screen');   // FIXED
     showElementById('play-ground');
     continueGame();
-
 }
 
 function showElementById (elementId){
