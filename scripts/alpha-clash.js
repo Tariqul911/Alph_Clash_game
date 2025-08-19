@@ -11,8 +11,18 @@
 // }
 
 
+function continueGame(){
+    // generate a random alphabet 
+    const alphabet = getARandomAlphabet();
+    console.log('Your random alphabet',alphabet);
+}
+
+
 function play (){
-    hideElementById('home-screen');
+    showElementById('home-screen');
+    showElementById('play-ground');
+    continueGame();
+
 }
 
 function showElementById (elementId){

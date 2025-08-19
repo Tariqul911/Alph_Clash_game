@@ -1,5 +1,12 @@
-function hideElementById (elementId) {
-    const element = document.getElementById(elementId);
-    element.classList.add('hidden');
-    showElementById('play-ground');
+
+function getARandomAlphabet(){
+    const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
+    const alphabets = alphabetString.split('');
+
+    const randomNumber = Math.random() * alphabets.length;
+    const index = Math.floor(randomNumber); 
+    
+    const alphabet = alphabets[index]; 
+    // console.log(index, alphabet);
+    return alphabet; 
 }
