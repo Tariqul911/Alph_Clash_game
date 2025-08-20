@@ -46,18 +46,30 @@ function handleKeyboardKeyUpEvent(event){
     // check matched or not
     if(playerPressed === expectedAlphabet){
         console.log('you get a point');
+
+        const currentScore = getTextElementValueById ('current-score');
+        console.log(currentScore);
+        const updatedScore = currentScore + 1;
+        setTextElementValueById('current-score', updatedScore);
+
+        
+
+
+
+
+        // ------------------------------------------------------
         // update score:
         // 1: get the current score
 
-        const currentScoreElement = document.getElementById('current-score');
-        const currentScoreText = currentScoreElement.innerText;
-        const currentScore = parseFloat(currentScoreText);
-        console.log(currentScore);
-
-        // 2: increase the score by 1 
+        // const currentScoreElement = document.getElementById('current-score');
+        // const currentScoreText = currentScoreElement.innerText;
+        // const currentScore = parseFloat(currentScoreText);
+        // console.log(currentScore);
+        
+        // // 2: increase the score by 1 
         const newScore = currentScore + 1;
-        // 3. show the updated score 
-        currentScoreElement.innerText = newScore;
+        // // 3. show the updated score 
+        // currentScoreElement.innerText = newScore;
 
 
 
@@ -68,14 +80,26 @@ function handleKeyboardKeyUpEvent(event){
     }
     else{
         console.log('you missed. you lost a life.');
-        //step:1 get the current life number
-        const currentLifeElement = document.getElementById('current-life'); 
-        const currentLifeText = currentLifeElement.innerText;
-        const currentLife = parseInt(currentLifeText);
-        // step:2 reduce the life count
-        const newLife = currentLife - 1;
-        // step:3 display the updated life count
-        currentLifeElement.innerText = newLife;
+
+
+        const currentLife = getTextElementValueById('current-life');
+        const updatedLife = currentLife - 1;
+        setTextElementValueById('current-life', updatedLife);
+
+        if(updatedLife === 0){
+            gameOver();
+        }
+
+
+        // ------------------------------------------------------
+        // //step:1 get the current life number
+        // const currentLifeElement = document.getElementById('current-life'); 
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+        // // step:2 reduce the life count
+        // const newLife = currentLife - 1;
+        // // step:3 display the updated life count
+        // currentLifeElement.innerText = newLife;
     }
 }
 
@@ -95,12 +119,25 @@ function continueGame(){
 }
 
 function play (){
-    hideElementById('home-screen');   // FIXED
+    //  hide everything show only playground
+    hideElementById('home-screen');   
+    hideElementById('final-score');
     showElementById('play-ground');
+
+    // reset score and life 
+    setTextElementValueById('current-life', 5); 
+    setTextElementValueById('current -score', 0);
+
+
     continueGame();
 }
 
 function showElementById (elementId){
     const element = document.getElementById(elementId);
     element.classList.remove('hidden');
+}
+
+function gameOver (){
+    hideElementById('play-ground'); 
+    showElementById('final-score');
 }
